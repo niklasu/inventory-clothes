@@ -1,0 +1,11 @@
+{
+    "oberteile":{
+        "tshirts":3,
+        "pullover": 2,
+        "hemden": 4,
+        "jacken": 3
+    },
+    "unterteile":{
+        "hosen": 3
+    }
+}
