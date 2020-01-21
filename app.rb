@@ -24,10 +24,20 @@ def anzeige(inventar)
             #{unterteile['hosen']} hosen\
         "
 end
+def hinzufügen(inventar)
+    puts "Was darf's denn sein? Ich kann tshirts, pullover, hemden, jacken und hosen hinzufügen"
+    choice = gets.strip
+    puts "Ok, wir fügen #{choice} hinzu. Wieviele denn?"
+    count = gets.strip
+    puts "Okese, #{count} #{choice} wurden hinzugefügt"
+    current_count = inventar
+end
 
-puts "Hauptmenü. 1 - Inventar anzeigen"
+puts "Hauptmenü. \n1 - Inventar anzeigen \n2 - Kleidung hinzufügen"
 choice = gets.strip
 case choice
 when "1"
     anzeige import
+when "2"
+    hinzufügen import
 end
