@@ -23,7 +23,9 @@ def hinzufügen(inventar)
     puts "Ok, wir fügen #{choice} hinzu. Wieviele denn?"
     count = gets.strip
     puts "Okese, #{count} #{choice} wurden hinzugefügt"
-    current_count = inventar.each{|group| group.find{|clothing| puts "Iterating... #{clothing}"}}
+    new_count = inventar[choice] + count.to_i
+    puts "Aus #{inventar[choice]} tshirts werden jetzt #{new_count}"
+    inventar[choice] = new_count 
 end
 
 puts "Hauptmenü. \n1 - Inventar anzeigen \n2 - Kleidung hinzufügen"
