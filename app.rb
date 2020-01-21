@@ -8,20 +8,13 @@ end
 
 def anzeige(inventar)
     puts "Inventar"
-
-    oberteile = inventar['oberteile']
-
     puts \
-        "Oberteile: \
-            #{oberteile['tshirts']} tshirts\
-            #{oberteile['pullover']} pullover\
-            #{oberteile['hemden']} hemden\
-            #{oberteile['jacken']} jacken\
-        "
-        unterteile = inventar['unterteile']
-        puts \
-        "Unerteile: \
-            #{unterteile['hosen']} hosen\
+        "inventar: \
+            #{inventar['tshirts']} tshirts\
+            #{inventar['pullover']} pullover\
+            #{inventar['hemden']} hemden\
+            #{inventar['jacken']} jacken\
+            #{inventar['hosen']} hosen\
         "
 end
 def hinzufügen(inventar)
@@ -30,7 +23,7 @@ def hinzufügen(inventar)
     puts "Ok, wir fügen #{choice} hinzu. Wieviele denn?"
     count = gets.strip
     puts "Okese, #{count} #{choice} wurden hinzugefügt"
-    current_count = inventar
+    current_count = inventar.each{|group| group.find{|clothing| puts "Iterating... #{clothing}"}}
 end
 
 puts "Hauptmenü. \n1 - Inventar anzeigen \n2 - Kleidung hinzufügen"
