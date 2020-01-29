@@ -33,6 +33,7 @@ import
 loop do
     puts \
     "Hauptmenü. \n\
+    0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
     2 - Anzahl ändern\
     "
