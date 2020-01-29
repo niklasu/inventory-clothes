@@ -18,7 +18,7 @@ def anzeige(inventar)
         "
 end
 def hinzufügen(inventar)
-    puts "Was darf's denn sein? Ich kann die Anzahl von tshirts, pullover, hemden, jacken und hosen ändern"
+    puts "Was darf's denn sein? Ich kann die Anzahl von Tshirts, Pullover, Hemden, Jacken und Hosen ändern"
     choice = gets.strip
     puts "Ok, wir ändern die Anzahl von #{choice}. Um wieviele Elemente?"
     count = gets.strip.to_i
@@ -32,7 +32,7 @@ end
 puts \
     "Hauptmenü. \n\
     1 - Inventar anzeigen \n\
-    2 - Anzahl ändern 
+    2 - Anzahl ändern\
     "
 choice = gets.strip
 case choice
