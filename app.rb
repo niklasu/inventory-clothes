@@ -30,15 +30,18 @@ def hinzufügen()
 end
 
 import
-puts \
+loop do
+    puts \
     "Hauptmenü. \n\
     1 - Inventar anzeigen \n\
     2 - Anzahl ändern\
     "
-choice = gets.strip
-case choice
-when "1"
+    choice = gets.strip
+    case choice
+    when "1"
     anzeige 
-when "2"
+    when "2"
     hinzufügen 
+    end
+break if choice == "0"
 end
