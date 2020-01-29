@@ -5,16 +5,14 @@ def import
     $inventar= JSON.load file
 end
 
-
 def anzeige()
-    puts "Inventar"
     puts \
-        "inventar: \
-            #{$inventar['tshirts']} tshirts\
-            #{$inventar['pullover']} pullover\
-            #{$inventar['hemden']} hemden\
-            #{$inventar['jacken']} jacken\
-            #{$inventar['hosen']} hosen\
+        "Inventar: \
+            #{$inventar['tshirts']} Tshirts\
+            #{$inventar['pullover']} Pullover\
+            #{$inventar['hemden']} Hemden\
+            #{$inventar['jacken']} Jacken\
+            #{$inventar['hosen']} Hosen\
         "
 end
 def hinzufügen()
