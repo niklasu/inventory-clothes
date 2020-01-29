@@ -20,7 +20,7 @@ def anzahl_ändern()
     choice = gets.strip
     puts "Ok, wir ändern die Anzahl von #{choice}. Um wieviele Elemente?"
     count = gets.strip.to_i
-    operation = count => 1 ? "hinzugefügt" : "entfernt" 
+    operation = count >= 1 ? "hinzugefügt" : "entfernt" 
     puts "Okese, #{count} #{choice} wurden #{operation}"
     new_count = $inventar[choice] + count
     puts "Aus #{$inventar[choice]} #{choice} werden jetzt #{new_count}"
