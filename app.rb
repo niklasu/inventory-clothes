@@ -25,7 +25,7 @@ def hinzufügen(inventar)
     operation = count > 1 ? "hinzugefügt" : "entfernt" 
     puts "Okese, #{count} #{choice} wurden #{operation}"
     new_count = inventar[choice] + count
-    puts "Aus #{inventar[choice]} tshirts werden jetzt #{new_count}"
+    puts "Aus #{inventar[choice]} #{choice} werden jetzt #{new_count}"
     inventar[choice] = new_count 
 end
 
