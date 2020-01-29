@@ -18,17 +18,22 @@ def anzeige(inventar)
         "
 end
 def hinzufügen(inventar)
-    puts "Was darf's denn sein? Ich kann tshirts, pullover, hemden, jacken und hosen hinzufügen"
+    puts "Was darf's denn sein? Ich kann die Anzahl von tshirts, pullover, hemden, jacken und hosen ändern"
     choice = gets.strip
-    puts "Ok, wir fügen #{choice} hinzu. Wieviele denn?"
-    count = gets.strip
-    puts "Okese, #{count} #{choice} wurden hinzugefügt"
-    new_count = inventar[choice] + count.to_i
+    puts "Ok, wir ändern die Anzahl von #{choice}. Um wieviele Elemente?"
+    count = gets.strip.to_i
+    operation = count > 1 ? "hinzugefügt" : "entfernt" 
+    puts "Okese, #{count} #{choice} wurden #{operation}"
+    new_count = inventar[choice] + count
     puts "Aus #{inventar[choice]} tshirts werden jetzt #{new_count}"
     inventar[choice] = new_count 
 end
 
-puts "Hauptmenü. \n1 - Inventar anzeigen \n2 - Kleidung hinzufügen"
+puts \
+    "Hauptmenü. \n\
+    1 - Inventar anzeigen \n\
+    2 - Anzahl ändern 
+    "
 choice = gets.strip
 case choice
 when "1"
