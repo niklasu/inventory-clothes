@@ -7,12 +7,12 @@ end
 
 def anzeige()
     puts \
-        "Inventar: \
-            #{$inventar['tshirts']} Tshirts\
-            #{$inventar['pullover']} Pullover\
-            #{$inventar['hemden']} Hemden\
-            #{$inventar['jacken']} Jacken\
-            #{$inventar['hosen']} Hosen\
+        "Inventar: 
+        #{$inventar['tshirts']} Tshirts
+        #{$inventar['pullover']} Pullover
+        #{$inventar['hemden']} Hemden
+        #{$inventar['jacken']} Jacken
+        #{$inventar['hosen']} Hosen
         "
 end
 def anzahl_ändern()
