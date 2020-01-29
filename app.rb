@@ -15,7 +15,7 @@ def anzeige()
             #{$inventar['hosen']} Hosen\
         "
 end
-def hinzufügen()
+def anzahl_ändern()
     puts "Was darf's denn sein? Ich kann die Anzahl von Tshirts, Pullover, Hemden, Jacken und Hosen ändern"
     choice = gets.strip
     puts "Ok, wir ändern die Anzahl von #{choice}. Um wieviele Elemente?"
@@ -40,7 +40,7 @@ loop do
     when "1"
     anzeige 
     when "2"
-    hinzufügen 
+    anzahl_ändern 
     end
 break if choice == "0"
 end
