@@ -27,20 +27,29 @@ def anzahl_ändern()
     $inventar[choice] = new_count 
 end
 
+def suche()
+    puts "Wonach suchen wir denn?"
+    search_term = gets.strip
+    result = $inventar.select{|key, hash| key.include? search_term}
+    puts result
+end
 import
 loop do
     puts \
     "Hauptmenü. \n\
     0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
-    2 - Anzahl ändern\
+    2 - Anzahl ändern\n\
+    3 - Inventar durchsuchen
     "
     choice = gets.strip
     case choice
     when "1"
-    anzeige 
+        anzeige 
     when "2"
-    anzahl_ändern 
+        anzahl_ändern 
+    when "3"
+        suche
     end
 break if choice == "0"
 end
