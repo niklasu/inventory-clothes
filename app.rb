@@ -34,6 +34,13 @@ def suche()
     result = $inventar.select{|key, hash| key.include? search_term}
     puts result
 end
+
+def export()
+    File.open("export.json", "w") do |f|
+        f.write($inventar.to_json)
+    end
+end
+
 import
 loop do
     puts \
@@ -41,7 +48,8 @@ loop do
     0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
     2 - Anzahl ändern\n\
-    3 - Inventar durchsuchen
+    3 - Inventar durchsuchen\n\
+    4 - Inventar exportieren
     "
     choice = gets.strip
     case choice
@@ -51,6 +59,8 @@ loop do
         anzahl_ändern 
     when "3"
         suche
+    when "4"
+        export
     end
 break if choice == "0"
 end
