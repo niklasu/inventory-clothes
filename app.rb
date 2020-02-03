@@ -14,13 +14,6 @@ def anzeige()
     }
 end
 
-def suche()
-    puts "Wonach suchen wir denn?"
-    search_term = gets.strip
-    result = $inventar.select{|key, hash| key.include? search_term}
-    puts result
-end
-
 def export()
     File.open("export.json", "w") do |f|
         f.write($inventar.to_json)
@@ -33,15 +26,12 @@ loop do
     "Hauptmenü\n\
     0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
-    2 - Inventar durchsuchen\n\
     3 - Inventar exportieren
     "
     choice = gets.strip
     case choice
     when "1"
         anzeige 
-    when "2"
-        suche
     when "3"
         export
     end
