@@ -1,7 +1,62 @@
 {
-    "tshirts":3,
-    "pullover": 2,
-    "hemden": 4,
-    "jacken": 3,
-    "hosen": 3
+    "tshirts":[
+        {
+            "Produkt": "Charles Wilson",
+            "Anzahl": 10,
+            "Anmerkung": "Fühlt sich schwitzig an"
+        },
+        {
+            "Produkt": "The North Face",
+            "Anzahl": 2,
+            "Anmerkung": "Fühlt sich sehr gut an"
+        }
+    ],
+    "pullover":[
+        {
+            "Produkt": "Charles Wilson",
+            "Anzahl": 10,
+            "Anmerkung": "Fühlt sich schwitzig an"
+        },
+        {
+            "Produkt": "The North Face",
+            "Anzahl": 2,
+            "Anmerkung": "Fühlt sich sehr gut an"
+        }
+    ],
+    "jacken":[
+        {
+            "Produkt": "Charles Wilson",
+            "Anzahl": 10,
+            "Anmerkung": "Fühlt sich schwitzig an"
+        },
+        {
+            "Produkt": "The North Face",
+            "Anzahl": 2,
+            "Anmerkung": "Fühlt sich sehr gut an"
+        }
+    ],
+    "hemdem":[
+        {
+            "Produkt": "Charles Wilson",
+            "Anzahl": 10,
+            "Anmerkung": "Fühlt sich schwitzig an"
+        },
+        {
+            "Produkt": "The North Face",
+            "Anzahl": 2,
+            "Anmerkung": "Fühlt sich sehr gut an"
+        }
+    ],
+    "hosen":[
+        {
+            "Produkt": "Charles Wilson",
+            "Anzahl": 10,
+            "Anmerkung": "Fühlt sich schwitzig an"
+        },
+        {
+            "Produkt": "The North Face",
+            "Anzahl": 2,
+            "Anmerkung": "Fühlt sich sehr gut an"
+        }
+    ]
 }
