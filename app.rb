@@ -15,6 +15,7 @@ def anzeige()
         #{$inventar['hosen']} Hosen
         "
 end
+
 def anzahl_ändern()
     puts "Was darf's denn sein? Ich kann die Anzahl von Tshirts, Pullover, Hemden, Jacken und Hosen ändern"
     choice = gets.strip
@@ -36,7 +37,7 @@ end
 import
 loop do
     puts \
-    "Hauptmenü. \n\
+    "Hauptmenü\n\
     0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
     2 - Anzahl ändern\n\
