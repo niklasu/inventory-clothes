@@ -1,0 +1,26 @@
+Datenstrukturen
+Use-Cases:
+1) Um einen Inventar-import von Hand zu schreiben:
+    - Text-basiert
+    - Tshirts liegen alle beieinander, also macht es Sinn, eine Kategorie namens "Tshirts" zu haben. Dann ist es einfacher alle Tshirts hintereinander weg zu schreiben
+2) Um das Inventar zu durchsuchen
+    - Es kann sein, dass ich die Kategorie schon kenne, muss aber nicht
+    - Es kann sein, dass ich den Hersteller oder Produktnamen schon kenne, muss aber nicht
+    --> Eine gute Suchfunktion muss das Auffinden aus allen Richtungen erlauben (Hersteller, Produkt, Material etc..)
+3) Um Beschreibungen für einzelne Artikel zu bearbeiten, muss zunächst der richtige Eintrag gefunden werden
+    - Über die SuFu --> Way to go. Navigationen werden mit der Zeit immer unübersichtlich
+    - Über Navigation. Dafür braucht man z.B. Ebenen zum hindurchnavigieren. Ideen für Ebenen
+        - Alphabetisch
+        - Material
+        - Farbe
+        - Hersteller
+        - Kategorie
+    - Diese Ebenen können unabhängig von der Import-Datenstruktur sein.
+    
+Doku:
+Datenstrukturen
+1) Import mit 2 Ebenen. 1. Kategorie, 2. Produkte
+2) Flache Datenstruktur, da sind nur Produkte drin, die die Kategorie als eigenes Feld beinhalten.
+3) Datenstruktur für die Anzeige:
+    - Bisher die Import-Datenstruktur
+    - Was ist besser? Flache Hierarchie

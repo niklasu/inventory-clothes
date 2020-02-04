@@ -9,53 +9,65 @@
             "Produkt": "The North Face",
             "Anzahl": 2,
             "Anmerkung": "Fühlt sich sehr gut an"
+        },
+        {
+            "Produkt": "Fruit of the Loom",
+            "Anzahl": 3,
+            "Anmerkung": "Fühlt sich OK an, 100% Baumwolle"
         }
     ],
     "pullover":[
         {
-            "Produkt": "Charles Wilson",
-            "Anzahl": 10,
-            "Anmerkung": "Fühlt sich schwitzig an"
+            "Produkt": "Tommy Hilfiger Kaschmir Pullover",
+            "Anzahl": 1,
+            "Anmerkung": "Fühlt sich sehr gut an. 92% Baumwolle, 8% Kaschmir"
         },
         {
-            "Produkt": "The North Face",
-            "Anzahl": 2,
-            "Anmerkung": "Fühlt sich sehr gut an"
+            "Produkt": "S-Oliver Pullover",
+            "Anzahl": 1,
+            "Anmerkung": "Fühlt sich OK an. 100% Baumwolle"
         }
     ],
     "jacken":[
         {
-            "Produkt": "Charles Wilson",
-            "Anzahl": 10,
-            "Anmerkung": "Fühlt sich schwitzig an"
+            "Produkt": "Calvin Klein Daunenjacke",
+            "Anzahl": 1,
+            "Anmerkung": "Fühlt sich sehr gut an. Bei Regen hat man allerdings verloren"
         },
         {
-            "Produkt": "The North Face",
-            "Anzahl": 2,
+            "Produkt": "Tommy Hilfiger Übergangsjacke",
+            "Anzahl": 1,
             "Anmerkung": "Fühlt sich sehr gut an"
         }
     ],
     "hemdem":[
         {
-            "Produkt": "Charles Wilson",
-            "Anzahl": 10,
-            "Anmerkung": "Fühlt sich schwitzig an"
+            "Produkt": "Tommy Hilfiger Hemd weiß kariert",
+            "Anzahl": 1,
+            "Anmerkung": "Fühlt sich sehr gut an"
         },
         {
-            "Produkt": "The North Face",
-            "Anzahl": 2,
+            "Produkt": "Tommy Hilfiger Hemd rot kariert",
+            "Anzahl": 1,
+            "Anmerkung": "Fühlt sich sehr gut an"
+        }
+    ],
+    "polo-hemdem":[
+        {
+            "Produkt": "Tommy Hilfiger polo",
+            "Anzahl": 3,
             "Anmerkung": "Fühlt sich sehr gut an"
         }
     ],
     "hosen":[
         {
-            "Produkt": "Charles Wilson",
-            "Anzahl": 10,
-            "Anmerkung": "Fühlt sich schwitzig an"
+            "Produkt": "Tommy Hilfiger denim jeans",
+            "Anzahl": 1,
+            "Anmerkung": "Fühlt sich OK an"
         },
         {
-            "Produkt": "The North Face",
-            "Anzahl": 2,
+            "Produkt": "Tommy Hilfiger stretch jeans",
+            "Anzahl": 4,
             "Anmerkung": "Fühlt sich sehr gut an"
         }
     ]

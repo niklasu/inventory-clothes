@@ -19,6 +19,33 @@ def export()
         f.write($inventar.to_json)
     end
 end
+def flatten_inventory
+    flat_items = $inventar.map{|kategorie, items|
+        items.map{|item| 
+            item["Kategorie"] = kategorie
+            item
+        } 
+    }.flatten
+end
+def get_index_for_search()
+    flatten_inventory 
+end
+
+def bearbeiten()
+    puts "Welches Produkt soll bearbeitet werden?"
+    puts get_index_for_search
+    puts get_index_for_search.count
+    choice = gets.strip
+    puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
+    new_description = gets.strip
+    get_index_for_search.find{|item|
+        if item["Produkt"] == choice
+            item["Anmerkung"] = new_description
+            puts "Aktualisiertes Produkt: #{item}"
+            item
+        end
+    }
+end
 
 import
 loop do
@@ -26,12 +53,15 @@ loop do
     "Hauptmenü\n\
     0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
+    2 - Anmerkung bearbeiten\n\
     3 - Inventar exportieren
     "
     choice = gets.strip
     case choice
     when "1"
         anzeige 
+    when "2"
+        bearbeiten
     when "3"
         export
     end
