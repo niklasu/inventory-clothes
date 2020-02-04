@@ -6,11 +6,8 @@ def import
 end
 
 def anzeige()
-    $inventar.each{|kategorie, items|
-        puts "#{kategorie}"
-        items.each{ |item| puts \
-                  "#{item['Anzahl']}x #{item['Produkt']} - #{item['Anmerkung']}"
-        }
+    $items.each{|item|
+        puts "#{item['Anzahl']}x #{item['Produkt']} - #{item['Anmerkung']}"
     }
 end
 
@@ -27,18 +24,13 @@ def flatten_inventory
         } 
     }.flatten
 end
-def get_index_for_search()
-    flatten_inventory 
-end
 
 def bearbeiten()
     puts "Welches Produkt soll bearbeitet werden?"
-    puts get_index_for_search
-    puts get_index_for_search.count
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
     new_description = gets.strip
-    get_index_for_search.find{|item|
+    $items.find{|item|
         if item["Produkt"] == choice
             item["Anmerkung"] = new_description
             puts "Aktualisiertes Produkt: #{item}"
@@ -46,8 +38,11 @@ def bearbeiten()
         end
     }
 end
-
+def init_items()
+    $items = flatten_inventory
+end
 import
+init_items
 loop do
     puts \
     "Hauptmenü\n\
