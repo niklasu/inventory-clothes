@@ -41,6 +41,21 @@ end
 def init_items()
     $items = flatten_inventory
 end
+
+def anzahl_ändern()
+    puts "Welches Produkt soll bearbeitet werden?"
+    choice = gets.strip
+    puts "Ok, #{choice} wird bearbeitet. Neue Anzahl?"
+    new_count = gets.strip.to_i
+    $items.find{|item|
+        if item["Produkt"] == choice
+            item["Anzahl"] = new_count
+            puts "Aktualisiertes Produkt: #{item}"
+            item
+        end
+    }
+    
+end
 import
 init_items
 loop do
@@ -49,7 +64,8 @@ loop do
     0 - Anwendung schließen \n\
     1 - Inventar anzeigen \n\
     2 - Anmerkung bearbeiten\n\
-    3 - Inventar exportieren
+    3 - Inventar exportieren\n\
+    4 - Anzahl ändern
     "
     choice = gets.strip
     case choice
@@ -59,6 +75,8 @@ loop do
         bearbeiten
     when "3"
         export
+    when "4"
+        anzahl_ändern
     end
 break if choice == "0"
 end
