@@ -56,6 +56,20 @@ def anzahl_ändern()
     }
     
 end
+
+def add()
+    puts "Name?"
+    name = gets.strip
+    puts "Anzahl?"
+    count = gets.strip.to_i
+    puts "Beschreibung?"
+    description = gets.strip
+    product = Hash.new
+    product["Produkt"] = name
+    product["Anzahl"] = count 
+    product["Anmerkung"] = description 
+    $items << product 
+end
 import
 init_items
 loop do
@@ -65,7 +79,8 @@ loop do
     1 - Inventar anzeigen \n\
     2 - Anmerkung bearbeiten\n\
     3 - Inventar exportieren\n\
-    4 - Anzahl ändern
+    4 - Element hinzufügen\n\
+    5 - Anzahl ändern
     "
     choice = gets.strip
     case choice
@@ -76,6 +91,8 @@ loop do
     when "3"
         export
     when "4"
+        add 
+    when "5"
         anzahl_ändern
     end
 break if choice == "0"
