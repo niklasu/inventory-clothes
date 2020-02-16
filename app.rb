@@ -10,10 +10,12 @@ def anzeige()
         puts "#{item['Anzahl']}x #{item['Produkt']} - #{item['Anmerkung']}"
     }
 end
-
+def to_import_structure
+    $items.group_by{|item|item["Kategorie"]}.to_json
+end
 def export()
     File.open("export.json", "w") do |f|
-        f.write($inventar.to_json)
+        f.write(to_import_structure)
     end
 end
 def flatten_inventory
@@ -64,10 +66,13 @@ def add()
     count = gets.strip.to_i
     puts "Beschreibung?"
     description = gets.strip
+    puts "Kategorie?"
+    category= gets.strip
     product = Hash.new
     product["Produkt"] = name
     product["Anzahl"] = count 
     product["Anmerkung"] = description 
+    product["Kategorie"] = category 
     $items << product 
 end
 import
