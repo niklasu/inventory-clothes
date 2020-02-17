@@ -17,6 +17,9 @@ class ItemRepository
         end
     }   
  end
+ def add(item)
+    @items << item 
+ end
 end
  
 def add()
@@ -33,7 +36,7 @@ def add()
     product["Anzahl"] = count 
     product["Anmerkung"] = description 
     product["Kategorie"] = category 
-    $itemRepository.getAll << product 
+    $itemRepository.add product
 end
 
 def import
