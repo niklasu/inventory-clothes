@@ -1,3 +1,41 @@
+class ItemRepository
+ @items = Hash.new
+ 
+ def initialize(import_items)
+    @items=import_items
+    puts "init done. got #{@items.count} items"
+ end
+
+ def getAll()
+     @items
+ end
+ 
+ def findByName(name)
+    @items.find{|item|
+        if item["Produkt"] == name 
+            item
+        end
+    }   
+ end
+end
+ 
+def add()
+    puts "Name?"
+    name = gets.strip
+    puts "Anzahl?"
+    count = gets.strip.to_i
+    puts "Beschreibung?"
+    description = gets.strip
+    puts "Kategorie?"
+    category= gets.strip
+    product = Hash.new
+    product["Produkt"] = name
+    product["Anzahl"] = count 
+    product["Anmerkung"] = description 
+    product["Kategorie"] = category 
+    $itemRepository.getAll << product 
+end
+
 def import
     require "json"
     puts "Importing import.json"
@@ -6,12 +44,13 @@ def import
 end
 
 def anzeige()
-    $items.each{|item|
+    $itemRepository.getAll.each{|item|
         puts "#{item['Anzahl']}x #{item['Produkt']} - #{item['Anmerkung']}"
     }
 end
+
 def to_import_structure
-    $items.group_by{|item|item["Kategorie"]}.to_json
+    $itemRepository.getAll.group_by{|item|item["Kategorie"]}.to_json
 end
 def export()
     File.open("export.json", "w") do |f|
@@ -32,16 +71,9 @@ def bearbeiten()
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
     new_description = gets.strip
-    $items.find{|item|
-        if item["Produkt"] == choice
-            item["Anmerkung"] = new_description
-            puts "Aktualisiertes Produkt: #{item}"
-            item
-        end
-    }
-end
-def init_items()
-    $items = flatten_inventory
+    item = $itemRepository.findByName choice
+    item["Anmerkung"] = new_description
+    puts "Aktualisiertes Produkt: #{item}"
 end
 
 def anzahl_ändern()
@@ -49,34 +81,13 @@ def anzahl_ändern()
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Anzahl?"
     new_count = gets.strip.to_i
-    $items.find{|item|
-        if item["Produkt"] == choice
-            item["Anzahl"] = new_count
-            puts "Aktualisiertes Produkt: #{item}"
-            item
-        end
-    }
-    
+    item = $itemRepository.findByName choice
+    item["Anzahl"] = new_count
+    puts "Aktualisiertes Produkt: #{item}"
 end
 
-def add()
-    puts "Name?"
-    name = gets.strip
-    puts "Anzahl?"
-    count = gets.strip.to_i
-    puts "Beschreibung?"
-    description = gets.strip
-    puts "Kategorie?"
-    category= gets.strip
-    product = Hash.new
-    product["Produkt"] = name
-    product["Anzahl"] = count 
-    product["Anmerkung"] = description 
-    product["Kategorie"] = category 
-    $items << product 
-end
 import
-init_items
+$itemRepository = ItemRepository.new flatten_inventory
 loop do
     puts \
     "Hauptmenü\n\
