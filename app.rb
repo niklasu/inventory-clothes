@@ -12,7 +12,7 @@ class ItemRepository
  
  def findByName(name)
     @items.find{|item|
-        if item["Product"] == name 
+        if item["product"] == name 
             item
         end
     }   
@@ -32,10 +32,10 @@ def add()
     puts "Kategorie?"
     category= gets.strip
     product = Hash.new
-    product["Product"] = name
-    product["Anzahl"] = count 
-    product["Anmerkung"] = description 
-    product["Kategorie"] = category 
+    product["product"] = name
+    product["count"] = count 
+    product["description"] = description 
+    product["category"] = category 
     $itemRepository.add product
 end
 
@@ -48,12 +48,12 @@ end
 
 def anzeige()
     $itemRepository.getAll.each{|item|
-        puts "#{item['Anzahl']}x #{item['Product']} - #{item['Anmerkung']}"
+        puts "#{item['count']}x #{item['product']} - #{item['description']}"
     }
 end
 
 def to_import_structure
-    $itemRepository.getAll.group_by{|item|item["Kategorie"]}.to_json
+    $itemRepository.getAll.group_by{|item|item["category"]}.to_json
 end
 def export()
     File.open("export.json", "w") do |f|
@@ -63,7 +63,7 @@ end
 def flatten_inventory
     flat_items = $inventar.map{|kategorie, items|
         items.map{|item| 
-            item["Kategorie"] = kategorie
+            item["category"] = kategorie
             item
         } 
     }.flatten
@@ -75,7 +75,7 @@ def bearbeiten()
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
     new_description = gets.strip
     item = $itemRepository.findByName choice
-    item["Anmerkung"] = new_description
+    item["description"] = new_description
     puts "Aktualisiertes Produkt: #{item}"
 end
 
@@ -85,7 +85,7 @@ def anzahl_ändern()
     puts "Ok, #{choice} wird bearbeitet. Neue Anzahl?"
     new_count = gets.strip.to_i
     item = $itemRepository.findByName choice
-    item["Anzahl"] = new_count
+    item["count"] = new_count
     puts "Aktualisiertes Produkt: #{item}"
 end
 
