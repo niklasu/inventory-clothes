@@ -12,7 +12,7 @@ class ItemRepository
  
  def findByName(name)
     @items.find{|item|
-        if item["Produkt"] == name 
+        if item["Product"] == name 
             item
         end
     }   
@@ -32,7 +32,7 @@ def add()
     puts "Kategorie?"
     category= gets.strip
     product = Hash.new
-    product["Produkt"] = name
+    product["Product"] = name
     product["Anzahl"] = count 
     product["Anmerkung"] = description 
     product["Kategorie"] = category 
@@ -48,7 +48,7 @@ end
 
 def anzeige()
     $itemRepository.getAll.each{|item|
-        puts "#{item['Anzahl']}x #{item['Produkt']} - #{item['Anmerkung']}"
+        puts "#{item['Anzahl']}x #{item['Product']} - #{item['Anmerkung']}"
     }
 end
 
