@@ -1,5 +1,5 @@
 class ItemRepository
- @items = Hash.new
+ @items = [] 
  
  def initialize(import_items)
     @items=import_items
@@ -12,7 +12,7 @@ class ItemRepository
  
  def findByName(name)
     @items.find{|item|
-        if item["product"] == name 
+        if item.name ==  name 
             item
         end
     }   
@@ -21,7 +21,20 @@ class ItemRepository
     @items << item 
  end
 end
- 
+class Product
+    attr_accessor :name, :count, :description, :category
+
+    def initialize(name, count, description, category)
+        @name = name
+        @count = count
+        @description = description
+        @category = category
+    end
+
+    def to_s
+        "#{@name} #{@count} #{@description} #{@category}"
+    end
+end
 def add()
     puts "Name?"
     name = gets.strip
@@ -31,11 +44,7 @@ def add()
     description = gets.strip
     puts "Kategorie?"
     category= gets.strip
-    product = Hash.new
-    product["product"] = name
-    product["count"] = count 
-    product["description"] = description 
-    product["category"] = category 
+    product = Product.new name, count, description, category 
     $itemRepository.add product
 end
 
@@ -48,7 +57,7 @@ end
 
 def anzeige()
     $itemRepository.getAll.each{|item|
-        puts "#{item['count']}x #{item['product']} - #{item['description']}"
+        puts "#{item.count}x #{item.name} - #{item.description}"
     }
 end
 
@@ -61,9 +70,10 @@ def export()
     end
 end
 def flatten_inventory
-    flat_items = $inventar.map{|kategorie, items|
+    flat_items = $inventar.map{|category, items|
         items.map{|item| 
-            item["category"] = kategorie
+            item['category'] = category
+            puts "flattened #{item}"
             item
         } 
     }.flatten
@@ -75,22 +85,26 @@ def bearbeiten()
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
     new_description = gets.strip
     item = $itemRepository.findByName choice
-    item["description"] = new_description
+    item.description = new_description
     puts "Aktualisiertes Produkt: #{item}"
 end
 
-def anzahl_ändern()
+def change_count()
     puts "Welches Produkt soll bearbeitet werden?"
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Anzahl?"
     new_count = gets.strip.to_i
     item = $itemRepository.findByName choice
-    item["count"] = new_count
+    item.count = new_count
     puts "Aktualisiertes Produkt: #{item}"
 end
-
+def to_types(flat_items)
+    flat_items.map{|item| 
+        Product.new item['product'], item['count'], item['description'],  item['category'] }
+end
 import
-$itemRepository = ItemRepository.new flatten_inventory
+typed_products = to_types flatten_inventory
+$itemRepository = ItemRepository.new typed_products
 loop do
     puts \
     "Hauptmenü\n\
@@ -112,7 +126,7 @@ loop do
     when "4"
         add 
     when "5"
-        anzahl_ändern
+        change_count
     end
 break if choice == "0"
 end
