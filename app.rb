@@ -30,10 +30,21 @@ class Product
         @description = description
         @category = category
     end
-
-    def to_s
-        "#{@name} #{@count} #{@description} #{@category}"
+    def as_json(options={})
+        {
+        name: @name,
+        count: @count,
+        description: @description,
+        category: @category
+        }
     end
+    def to_json(*options)
+        as_json(*options).to_json(*options)
+    end
+
+#    def to_s
+#        "#{@name} #{@count} #{@description} #{@category}"
+#    end
 end
 def add()
     puts "Name?"
@@ -62,7 +73,7 @@ def anzeige()
 end
 
 def to_import_structure
-    $itemRepository.getAll.group_by{|item|item["category"]}.to_json
+    $itemRepository.getAll.group_by{|item|item.category}.to_json
 end
 def export()
     File.open("export.json", "w") do |f|
@@ -100,7 +111,7 @@ def change_count()
 end
 def to_types(flat_items)
     flat_items.map{|item| 
-        Product.new item['product'], item['count'], item['description'],  item['category'] }
+        Product.new item['name'], item['count'], item['description'],  item['category'] }
 end
 import
 typed_products = to_types flatten_inventory
