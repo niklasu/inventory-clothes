@@ -24,3 +24,6 @@ Datenstrukturen
 3) Datenstruktur für die Anzeige:
     - Bisher die Import-Datenstruktur
     - Was ist besser? Flache Hierarchie
+
+Lessons Learned: 
+    - mal wieder: refactoring ohne automatisierte Tests: nach jeder Codeänderung alle Features von Hand testen :(
