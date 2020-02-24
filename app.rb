@@ -1,4 +1,5 @@
 require_relative 'classes.rb'
+require_relative 'import_export.rb'
 def add()
     puts "Name?"
     name = gets.strip
@@ -12,29 +13,14 @@ def add()
     $itemRepository.add product
 end
 
-def import
-    require "json"
-    puts "Importing import.json"
-    file = File.open "import.json"
-    $inventar= JSON.load file
-end
-
 def anzeige()
     $itemRepository.getAll.each{|item|
         puts "#{item.count}x #{item.name} - #{item.description}"
     }
 end
 
-def to_import_structure
-    $itemRepository.getAll.group_by{|item|item.category}.to_json
-end
-def export()
-    File.open("export.json", "w") do |f|
-        f.write(to_import_structure)
-    end
-end
-def flatten_inventory
-    flat_items = $inventar.map{|category, items|
+def flatten_inventory inventory
+    flat_items = inventory.map{|category, items|
         items.map{|item| 
             item['category'] = category
             puts "flattened #{item}"
@@ -70,8 +56,8 @@ def to_types(flat_items)
     flat_items.map{|item| 
         Product.new item['name'], item['count'], item['description'],  item['category'] }
 end
-import
-typed_products = to_types flatten_inventory
+$importExport = ImportExport.new
+typed_products = to_types flatten_inventory($importExport.import)
 $itemRepository = ItemRepository.new typed_products
 loop do
     puts \
@@ -90,7 +76,7 @@ loop do
     when "2"
         change_description
     when "3"
-        export
+        $importExport.export $itemRepository.getAll 
     when "4"
         add 
     when "5"
