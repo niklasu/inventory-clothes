@@ -49,8 +49,12 @@ def change_description()
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
     new_description = gets.strip
     item = $itemRepository.findByName choice
-    item.description = new_description
-    puts "Aktualisiertes Produkt: #{item}"
+    if item.nil?
+        puts "#{choice} wurde nicht gefunden"
+    else 
+        item.description = new_description
+        puts "Aktualisiertes Produkt: #{item}"
+    end
 end
 
 def change_count()
