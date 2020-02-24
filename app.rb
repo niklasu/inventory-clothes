@@ -13,7 +13,7 @@ def add()
     $itemRepository.add product
 end
 
-def anzeige()
+def print()
     $itemRepository.getAll.each{|item|
         puts "#{item.count}x #{item.name} - #{item.description}"
     }
@@ -23,7 +23,6 @@ def flatten_inventory inventory
     flat_items = inventory.map{|category, items|
         items.map{|item| 
             item['category'] = category
-            puts "flattened #{item}"
             item
         } 
     }.flatten
@@ -57,7 +56,7 @@ def to_types(flat_items)
         Product.new item['name'], item['count'], item['description'],  item['category'] }
 end
 $importExport = ImportExport.new
-typed_products = to_types flatten_inventory($importExport.import)
+typed_products = to_types flatten_inventory $importExport.import 
 $itemRepository = ItemRepository.new typed_products
 loop do
     puts \
@@ -72,7 +71,7 @@ loop do
     choice = gets.strip
     case choice
     when "1"
-        anzeige 
+        print 
     when "2"
         change_description
     when "3"
