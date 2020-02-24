@@ -43,7 +43,7 @@ def flatten_inventory
     }.flatten
 end
 
-def bearbeiten()
+def change_description()
     puts "Welches Produkt soll bearbeitet werden?"
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
@@ -84,7 +84,7 @@ loop do
     when "1"
         anzeige 
     when "2"
-        bearbeiten
+        change_description
     when "3"
         export
     when "4"
