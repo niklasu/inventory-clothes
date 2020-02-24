@@ -28,4 +28,8 @@ class TestItemRepository < Test::Unit::TestCase
         
         assert_equal(first, repo.findByName("exsting"))
     end
+    def test_nil_if_not_found
+        repo = ItemRepository.new []
+        assert_nil(repo.findByName "not present")
+    end
 end
