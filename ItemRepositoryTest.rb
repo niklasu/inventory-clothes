@@ -32,4 +32,12 @@ class TestItemRepository < Test::Unit::TestCase
         repo = ItemRepository.new []
         assert_nil(repo.findByName "not present")
     end
+    def test_delete
+        repo = ItemRepository.new []
+        first = Product.new("exsting", 2, "descr", "cat")
+        repo.add first 
+
+        repo.remove first
+        assert_equal 0, repo.getAll.count
+    end
 end

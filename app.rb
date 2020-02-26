@@ -51,6 +51,17 @@ def change_count()
     item.count = new_count
     puts "Aktualisiertes Produkt: #{item}"
 end
+def remove 
+    puts "Welches Produkt soll entfernt werden?"
+    choice = gets.strip
+    item = $itemRepository.findByName choice
+    if item.nil?
+        puts "#{choice} wurde nicht gefunden"
+    else 
+        $itemRepository.remove item
+        puts "#{item} wurde entfernt"
+    end
+end
 def to_types(flat_items)
     flat_items.map{|item| 
         Product.new item['name'], item['count'], item['description'],  item['category'] }
@@ -66,7 +77,8 @@ loop do
     2 - Anmerkung bearbeiten\n\
     3 - Inventar exportieren\n\
     4 - Element hinzufügen\n\
-    5 - Anzahl ändern
+    5 - Anzahl ändern\n\
+    6 - Element entfernen
     "
     choice = gets.strip
     case choice
@@ -80,6 +92,8 @@ loop do
         add 
     when "5"
         change_count
+    when "6"
+        remove 
     end
 break if choice == "0"
 end
