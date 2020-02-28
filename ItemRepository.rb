@@ -6,11 +6,11 @@ class ItemRepository
     puts "init done. got #{@items.count} items"
  end
 
- def getAll()
+ def get_all()
      @items
  end
  
- def findByName(name)
+ def find_by_name(name)
     @items.find{|item|
         if item.name ==  name 
             item

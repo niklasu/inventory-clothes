@@ -15,7 +15,7 @@ def add()
 end
 
 def print()
-    $itemRepository.getAll.each{|item|
+    $itemRepository.get_all.each{|item|
         puts "#{item.count}x #{item.name} - #{item.description}"
     }
 end
@@ -34,7 +34,7 @@ def change_description()
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Beschreibung?"
     new_description = gets.strip
-    item = $itemRepository.findByName choice
+    item = $itemRepository.find_by_name choice
     if item.nil?
         puts "#{choice} wurde nicht gefunden"
     else 
@@ -48,14 +48,14 @@ def change_count()
     choice = gets.strip
     puts "Ok, #{choice} wird bearbeitet. Neue Anzahl?"
     new_count = gets.strip.to_i
-    item = $itemRepository.findByName choice
+    item = $itemRepository.find_by_name choice
     item.count = new_count
     puts "Aktualisiertes Produkt: #{item}"
 end
 def remove 
     puts "Welches Produkt soll entfernt werden?"
     choice = gets.strip
-    item = $itemRepository.findByName choice
+    item = $itemRepository.find_by_name choice
     if item.nil?
         puts "#{choice} wurde nicht gefunden"
     else 
@@ -88,7 +88,7 @@ loop do
     when "2"
         change_description
     when "3"
-        $importExport.export $itemRepository.getAll 
+        $importExport.export $itemRepository.get_all 
     when "4"
         add 
     when "5"

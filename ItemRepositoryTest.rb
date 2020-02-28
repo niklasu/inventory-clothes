@@ -7,31 +7,31 @@ class TestItemRepository < Test::Unit::TestCase
         repo = ItemRepository.new []
         repo.add Product.new("exsting", 2, "descr", "cat")
         repo.add Product.new("name", 2, "descr", "cat")
-        assert_equal(Product.new("name", 2, "descr", "cat"), repo.getAll.last)
+        assert_equal(Product.new("name", 2, "descr", "cat"), repo.get_all.last)
     end
     def test_add
         repo = ItemRepository.new []
         repo.add Product.new("name", 2, "descr", "cat")
-        assert_equal(Product.new("name", 2, "descr", "cat"), repo.getAll.first)
+        assert_equal(Product.new("name", 2, "descr", "cat"), repo.get_all.first)
     end
-    def test_getAll
+    def test_get_all
         repo = ItemRepository.new []
         first = Product.new("exsting", 2, "descr", "cat")
         repo.add first 
         second = Product.new("name", 2, "descr", "cat")
         repo.add second
-        assert_equal([first, second], repo.getAll)
+        assert_equal([first, second], repo.get_all)
     end
-    def test_findByName
+    def test_find_by_name
         repo = ItemRepository.new []
         first = Product.new("exsting", 2, "descr", "cat")
         repo.add first 
         
-        assert_equal(first, repo.findByName("exsting"))
+        assert_equal(first, repo.find_by_name("exsting"))
     end
     def test_nil_if_not_found
         repo = ItemRepository.new []
-        assert_nil(repo.findByName "not present")
+        assert_nil(repo.find_by_name "not present")
     end
     def test_delete
         repo = ItemRepository.new []
@@ -39,6 +39,6 @@ class TestItemRepository < Test::Unit::TestCase
         repo.add first 
 
         repo.remove first
-        assert_equal 0, repo.getAll.count
+        assert_equal 0, repo.get_all.count
     end
 end
