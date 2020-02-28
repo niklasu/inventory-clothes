@@ -1,5 +1,6 @@
-require_relative 'classes.rb'
+require_relative 'Product.rb'
 require_relative 'import_export.rb'
+require_relative 'ItemRepository.rb'
 def add()
     puts "Name?"
     name = gets.strip

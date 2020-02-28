@@ -1,4 +1,4 @@
-require_relative 'classes.rb'
+require_relative 'Product.rb'
 require 'test/unit'
     require "json"
 
