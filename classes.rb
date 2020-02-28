@@ -53,7 +53,7 @@ class Product
      self.category == other.category
  end
 
-#    def to_s
-#        "#{@name} #{@count} #{@description} #{@category}"
-#    end
+     def to_s
+         "#{@name} #{@count} #{@description} #{@category}"
+     end
 end
