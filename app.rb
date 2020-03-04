@@ -68,8 +68,7 @@ def to_types(flat_items)
         Product.new item['name'], item['count'], item['description'],  item['category'] }
 end
 $importExport = ImportExport.new
-typed_products = to_types flatten_inventory $importExport.import 
-$itemRepository = ItemRepository.new typed_products
+$itemRepository = ItemRepository.new to_types flatten_inventory $importExport.import 
 loop do
     puts \
     "Hauptmenü\n\
